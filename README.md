@@ -8,17 +8,10 @@ odoo scaffold clientes
 
 Con ello hemos creado un módulo nuevo y se nos ha tenido que crear la siguiente estructura de carpetas:
 
-```markdown
-clientes/
- ├── controllers/
- ├── data/
- ├── models/
- ├── security/
- ├── views/
- ├── __init__.py
- ├── __manifest__.py
- └── ...
-```
+<img width="285" height="453" alt="image" src="https://github.com/user-attachments/assets/e54b8448-8109-474d-aad2-42fa7aac0904" />
+
+
+
 ### __manifest__.py
 
 Archivo más importante del módulo.
