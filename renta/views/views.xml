@@ -1,0 +1,101 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <!-- Esta es la pantalla del arbol-->
+    <record model="ir.ui.view" id="renta.list">
+      <field name="name">renta list</field>
+      <field name="model">renta.renta</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="codigo"/>
+          <field name="ano"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="renta.list_cliente">
+      <field name="name">renta list cliente</field>
+      <field name="model">renta.cliente</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre"/>
+          <field name="apellido1"/>
+          <field name="apellido2"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Esta en la pantalla del formulario-->
+    <record model="ir.ui.view" id="renta_form_view">
+    <field name="name">renta.form</field>
+    <field name="model">renta.renta</field>
+    <field name="arch" type="xml">
+        <form string="Renta">
+            <sheet>
+                <group>
+                    <field name="codigo"/>
+                    <field name="descripcion"/>
+                    <field name="ano"/>    
+                </group>
+            </sheet>
+        </form>
+    </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="renta.action_window_renta">
+      <field name="name">renta window</field>
+      <field name="res_model">renta.renta</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="renta.action_window_cliente">
+      <field name="name">Gestión Clientes</field>
+      <field name="res_model">renta.cliente</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="renta.action_server">
+      <field name="name">renta server</field>
+      <field name="model_id" ref="model_renta_renta"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="RENTA 2025" id="renta.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Rentas de Clientes" id="renta.menu_1" parent="renta.menu_root"/>
+    <menuitem name="Clientes" id="renta.menu_2" parent="renta.menu_root"/>
+    <!--
+    <menuitem name="Menu 2" id="renta.menu_2" parent="renta.menu_root"/>-->
+
+    <!-- actions -->
+
+    <menuitem name="List" id="renta.menu_1_list" parent="renta.menu_1"
+              action="renta.action_window_renta"/>
+    <menuitem name="List" id="renta.menu_2_list" parent="renta.menu_2"
+              action="renta.action_window_cliente"/>
+<!--
+    <menuitem name="Server to list" id="renta" parent="renta.menu_2"
+              action="renta.action_server"/>
+-->
+  </data>
+</odoo>
