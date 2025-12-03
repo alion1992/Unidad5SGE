@@ -36,6 +36,7 @@ Si aparece como aplicación
 Es, literalmente, la ficha técnica del módulo.
 Odoo lo lee para saber qué cargar y cómo hacerlo.
 
+
 ```python
 {
     'name': "Clientes Renta",
@@ -216,3 +217,17 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_clientes_clientes,clientes.clientes,model_clientes_clientes,base.group_user,1,1,1,1
 access_clientes_puesto,clientes.puesto,model_clientes_puesto,base.group_user,1,1,1,1
 ```
+
+<h2>Instalación del módulo en el odoo</h2>
+
+<img width="1693" height="376" alt="image" src="https://github.com/user-attachments/assets/5df5c822-a2fa-421d-ab4e-c07bbe6e6863" />
+
+En el buscador de aplicaciones estamos desarrollando módulos no aplicaciones por lo que tenemos que eliminar el filtro de aplicaciones:
+
+<img width="1331" height="426" alt="image" src="https://github.com/user-attachments/assets/737bfd6c-75d4-4662-88bf-4d6b52c05d5d" />
+<br>
+<img width="373" height="191" alt="image" src="https://github.com/user-attachments/assets/cefa51aa-e965-463b-901a-d9ca85cf7a1c" />
+<br>
+<img width="199" height="138" alt="image" src="https://github.com/user-attachments/assets/71fbcd3e-096f-4f17-a136-353e27036bed" />
+
+
