@@ -223,4 +223,85 @@ En el buscador de aplicaciones estamos desarrollando módulos no aplicaciones po
 <br>
 <img width="199" height="138" alt="image" src="https://github.com/user-attachments/assets/71fbcd3e-096f-4f17-a136-353e27036bed" />
 
+## RELACIONES
+
+Odoo ofrece 3 tipos principales de relaciones:
+
+1. Many2one → muchos registros apuntan a uno
+
+2. One2many → uno tiene muchos (inversa del Many2one)
+
+3. Many2many → muchos a muchos
+
+### Many2one
+
+Por ejemplo: muchos clientes pertenecen a una ciudad:
+
+```python
+ciudad_id = fields.Many2one(
+    'res.city',
+    string='Ciudad'
+)
+```
+<strong> ¿Qué hace? </strong>
+
+- Crea una FK en la tabla actual
+- EL usuario selecciona un registro desde un desplegable
+
+```python
+class Clientes(models.Model):
+    _name = 'clientes.cliente'
+
+    nombre = fields.Char()
+    ciudad_id = fields.Many2one('res.country.state', string='Ciudad')
+```
+
+### One2Many
+
+Relación uno → muchos.
+Es la inversa de Many2one, NO crea columna en la tabla.
+Se apoya en un Many2one.
+
+```python
+class Proyecto(models.Model):
+    _name = 'proyecto.proyecto'
+    
+    nombre = fields.Char()
+    tareas_ids = fields.One2many('proyecto.tarea', 'proyecto_id')
+
+class Tarea(models.Model):
+    _name = 'proyecto.tarea'
+    
+    nombre = fields.Char()
+    proyecto_id = fields.Many2one('proyecto.proyecto')
+```
+
+### Many2Many
+
+Relación muchos ↔ muchos.
+Ejemplo: una tarea puede usar varias tecnologías y una tecnología puede estar en muchas tareas.
+
+```python
+tecnologia_ids = fields.Many2many('proyecto.tecnologia', string='Tecnologías')
+```
+
+- Crea automáticamente una tabla intermedia: proyecto_tarea_proyecto_tecnologia_rel
+- Permite seleccionar múltiples valores desde un widget
+
+```python
+class Tarea(models.Model):
+    _name = 'proyecto.tarea'
+
+    nombre = fields.Char()
+    tecnologia_ids = fields.Many2many('proyecto.tecnologia')
+
+class Tecnologia(models.Model):
+    _name = 'proyecto.tecnologia'
+
+    nombre = fields.Char()
+```
+
+
+
+
 
