@@ -1,7 +1,7 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-
+    <!--VISTA PARA CLIENTES-->
     <record model="ir.ui.view" id="clientes.list">
       <field name="name">Clientes</field>
       <field name="model">clientes.clientes</field>
@@ -9,11 +9,33 @@
         <tree>
           <field name="nombre"/>
           <field name="apellido"/>
-          <field name="descripcion"/>
+          <field name="apellido2"/>
         </tree>
       </field>
     </record>
 
+    <record model="ir.ui.view" id="clientes_form_view">
+    <field name="name">clientes.form</field>
+    <field name="model">clientes.clientes</field>
+    <field name="arch" type="xml">
+        <form string="Cliente">
+            <sheet>
+                <group>
+                    <field name="nombre"/>
+                    <field name="apellido"/>
+                    <field name="apellido2"/>
+                    <field name="descripcion"/>
+                    <field name="fecha_nacimiento"/>
+                    <field name="activo"/>
+                    <field name ="puesto_id"/>
+                    <field name = "renta_id"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+    </record>
+    <!--FIN VISTA CLIENTES-->
+    
     <record model="ir.ui.view" id="clientes.list_puesto">
       <field name="name">Puesto</field>
       <field name="model">clientes.puesto</field>
