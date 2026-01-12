@@ -300,6 +300,46 @@ class Tecnologia(models.Model):
 
     nombre = fields.Char()
 ```
+### Campos computados
+
+Es un campo cuyo valor:
+
+- Se calcula mediante un método Python
+
+- Se actualiza automáticamente cuando cambian otros campos
+
+- Puede guardarse en base de datos o no
+
+```python
+from odoo import models, fields, api
+
+class Pedido(models.Model):
+    _name = 'mi.pedido'
+
+    precio = fields.Float()
+    cantidad = fields.Integer()
+    total = fields.Float(
+        compute='_compute_total',
+        store=True
+    )
+
+    @api.depends('precio', 'cantidad')
+    def _compute_total(self):
+        for record in self:
+            record.total = record.precio * record.cantidad
+```
+
+Indica el método que calcula el valor.
+
+```python
+compute='_compute_total'
+```
+
+Declara de qué campos depende el cálculo.
+
+```pythob
+@api.depends('precio', 'cantidad')
+```
 
 
 
