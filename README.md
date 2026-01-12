@@ -125,6 +125,7 @@ La vista tipo List esta asociada a la vista de búsqueda y datos
 
 <img width="1697" height="277" alt="image" src="https://github.com/user-attachments/assets/53752510-b07d-4464-9213-31a635395e9a" />
 
+## Formularios
 
 Los formularios para introducir resultados (se crea por defecto pero podemos editarlos)
 
