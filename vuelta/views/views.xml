@@ -1,0 +1,83 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="vuelta.vuelta">
+      <field name="name">vuelta list</field>
+      <field name="model">vuelta.vuelta</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="vuelta.persona">
+      <field name="name">persona list</field>
+      <field name="model">vuelta.persona</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre"/>
+          <field name="apellido1"/>
+          <field name="apellido2"/>
+        </tree>
+      </field>
+    </record>
+
+    <!--Formularios-->
+    <record model="ir.ui.view" id="vuelta.persona_form">
+    <field name="name">Nueva Persona</field>
+    <field name="model">vuelta.persona</field>
+    <field name="arch" type="xml">
+        <form string="Cliente">
+            <sheet>
+                <group>
+                    <field name="nombre"/>
+                    <field name="apellido1"/>
+                    <field name="apellido2"/>
+                    <field name="nombreCompleto"/>
+                    <field name="imagen" />
+                    <field name="etiqueta_ids" widget="many2many_tags"/>
+                    
+                </group>
+            </sheet>
+        </form>
+    </field>
+    </record>
+
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="vuelta.action_window">
+      <field name="name">Menú de Vuelta</field>
+      <field name="res_model">vuelta.vuelta</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="vuelta.action_window_persona">
+      <field name="name">Menú de Persona</field>
+      <field name="res_model">vuelta.persona</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="Vuelta" id="vuelta.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Vuelta" id="vuelta.menu_1" parent="vuelta.menu_root"/>
+    <menuitem name="Persona" id="vuelta.menu_2" parent="vuelta.menu_root"/>
+    
+
+    <!-- actions -->
+
+    <menuitem name="Buscar Vuelta" id="vuelta.menu_1_list" parent="vuelta.menu_1"
+              action="vuelta.action_window"/>
+    <menuitem name="Buscar Persona" id="vuelta.menu_2_list" parent="vuelta.menu_2"
+              action="vuelta.action_window_persona"/>
+
+  </data>
+</odoo>
