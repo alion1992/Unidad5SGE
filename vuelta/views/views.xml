@@ -3,7 +3,7 @@
     <!-- explicit list view definition -->
 
     <record model="ir.ui.view" id="vuelta.vuelta">
-      <field name="name">vuelta list</field>
+      <field name="name">Vueltas</field>
       <field name="model">vuelta.vuelta</field>
       <field name="arch" type="xml">
         <tree>
@@ -12,8 +12,19 @@
       </field>
     </record>
 
+    <record model="ir.ui.view" id="vuelta.etiqueta">
+      <field name="name">Etiqueta</field>
+      <field name="model">vuelta.etiqueta</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre"/>
+        </tree>
+      </field>
+    </record>
+
+
     <record model="ir.ui.view" id="vuelta.persona">
-      <field name="name">persona list</field>
+      <field name="name">Personas</field>
       <field name="model">vuelta.persona</field>
       <field name="arch" type="xml">
         <tree>
@@ -46,6 +57,20 @@
     </record>
 
 
+    <record model="ir.ui.view" id="vuelta.vuelta_form">
+    <field name="name">Nueva Vuelta</field>
+    <field name="model">vuelta.vuelta</field>
+    <field name="arch" type="xml">
+        <form string="Cliente">
+            <sheet>
+                <group>
+                    <field name="name"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+    </record>
+
 
     <!-- actions opening views on models -->
 
@@ -61,6 +86,12 @@
       <field name="view_mode">tree,form</field>
     </record>
 
+    <record model="ir.actions.act_window" id="vuelta.action_window_etiqueta">
+      <field name="name">Menú de Etiqueta</field>
+      <field name="res_model">vuelta.etiqueta</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
 
     <!-- Top menu item -->
 
@@ -70,6 +101,7 @@
 
     <menuitem name="Vuelta" id="vuelta.menu_1" parent="vuelta.menu_root"/>
     <menuitem name="Persona" id="vuelta.menu_2" parent="vuelta.menu_root"/>
+    <menuitem name="Etiqueta" id="vuelta.menu_3" parent="vuelta.menu_2"/>
     
 
     <!-- actions -->
@@ -78,6 +110,8 @@
               action="vuelta.action_window"/>
     <menuitem name="Buscar Persona" id="vuelta.menu_2_list" parent="vuelta.menu_2"
               action="vuelta.action_window_persona"/>
+    <menuitem name="Buscar Etiqueta" id="vuelta.menu_3_list" parent="vuelta.menu_3"
+              action="vuelta.action_window_etiqueta"/>
 
   </data>
 </odoo>

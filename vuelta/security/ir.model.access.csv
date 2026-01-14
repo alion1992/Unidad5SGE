@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_vuelta_vuelta,vuelta.vuelta,model_vuelta_vuelta,base.group_user,1,1,1,1
 access_vuelta_persona,vuelta.persona,model_vuelta_persona,base.group_user,1,1,1,1
+access_vuelta_etiqueta,vuelta.etiqueta,model_vuelta_etiqueta,base.group_user,1,1,1,1

@@ -44,5 +44,7 @@ class persona(models.Model):
 
 class etiqueta(models.Model):
     _name = 'vuelta.etiqueta'
+    _description_ = 'vuelta.etiqueta'
+
 
     nombre = fields.Char()
