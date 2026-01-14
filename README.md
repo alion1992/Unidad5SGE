@@ -2,6 +2,11 @@
 
 Para ello desde la terminal del docker de nuestro odoo ir a la carpeta donde tenemos configurados nuestros addons y lanzar
 
+En la carpeta mnt/extra-addons
+
+<img width="351" height="130" alt="image" src="https://github.com/user-attachments/assets/ea6b846a-b0bd-4536-8f43-93afc42b5fd2" />
+
+
 ```bash
 odoo scaffold clientes
 ```
