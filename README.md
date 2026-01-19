@@ -346,6 +346,38 @@ Declara de qué campos depende el cálculo.
 ```pythob
 @api.depends('precio', 'cantidad')
 ```
+## Vista Kanban
+
+```xml
+<!--Vista Kanban-->
+    <record id="vista_kanban_persona" model="ir.ui.view">
+    <field name="name">persona kanban</field>
+    <field name="model">vuelta.persona</field>
+    <field name="arch" type="xml">
+        <kanban default_group_by="nombre">
+            <field name="nombre"/>
+            <field name="apellido1"/>
+            <field name="apellido2"/>
+             <templates>
+                <t t-name="kanban-box">
+                    <div class="oe_kanban_card">
+                        <strong>
+                            <field name="nombre"/>
+                        </strong>
+                        <div>
+                            <field name="apellido1"/>
+                        </div>
+                        <div>
+                            <field name="apellido2"/>
+                        </div>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+    </record>
+```
+
 
 
 
