@@ -378,6 +378,25 @@ Declara de qué campos depende el cálculo.
     </record>
 ```
 
+## Log
+
+Odoo usa el sistema estándar de logging de Python.
+
+```python
+import logging
+
+_logger = logging.getLogger(__name__)
+```
+
+### Escribir mensajes en el log
+
+```python
+_logger.info("Creando proveedor")
+_logger.warning("Proveedor sin email")
+_logger.error("Error al crear proveedor")
+_logger.debug("Valores recibidos: %s", vals)
+```
+
 ## Métodos del ORM
 
 | Método        | Cuándo se ejecuta | Uso típico                   |
