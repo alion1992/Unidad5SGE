@@ -378,6 +378,20 @@ Declara de qué campos depende el cálculo.
     </record>
 ```
 
+## Métodos del ORM
+
+| Método        | Cuándo se ejecuta | Uso típico                   |
+| ------------- | ----------------- | ---------------------------- |
+| `create`      | Al crear          | Valores por defecto, códigos |
+| `write`       | Al editar         | Control de cambios           |
+| `unlink`      | Al borrar         | Prohibir borrado             |
+| `search`      | Buscar            | Consultas                    |
+| `browse`      | Por ID            | Acceso directo               |
+| `filtered`    | En memoria        | Filtros rápidos              |
+| `@depends`    | Automático        | Cálculos                     |
+| `@constrains` | Validación        | Reglas                       |
+
+
 
 
 
