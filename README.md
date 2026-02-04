@@ -411,8 +411,62 @@ _logger.debug("Valores recibidos: %s", vals)
 | `@constrains` | Validación        | Reglas                       |
 
 
+En Odoo, los métodos create y write permiten interceptar la creación y modificación de registros para aplicar lógica de negocio, automatizaciones o validaciones.
+
+### Método create
+
+El método create() se ejecuta antes de que el registro se guarde en la base de datos.
+
+Se usa principalmente para:
+
+- Validar datos antes de crear el registro (este será nuestro caso)
+- Generar valores automáticamente 
+- Crear registros relacionados
+- Normalizar datos
+
+```python
+@api.model
+    def create(self, vals):
+        if vals.get('edad', 0) < 0:
+            raise ValidationError("La edad no puede ser negativa")
+
+        return super().create(vals)
+```
+
+SIEMPRE llamar a super()
+Si no lo haces, el registro no se guardará correctamente.
+
+### Método write
+
+Se ejecuta cuando se modifica un registro existente.
+
+Usos habituales:
+
+- Evitar cambios no permitidos
+- Auditar modificaciones
+- Recalcular datos
+- Bloquear estados
+
+```python
+def write(self, vals):
+
+    if 'edad' in vals and vals['edad'] < 0:
+        raise ValidationError("La edad no puede ser negativa")
+
+    return super().write(vals)
+```
+ RECORDAR: Si el campo no ha sido modificado no va el el vals por lo que tendremos que comprobar nulos antes.
+
+### Validaciones con api constrains
+
+Se ejecuta automáticamente cuando cambian los campos indicados.
+
+```python
 
 
-
-
-
+@api.constrains('edad')
+def _check_edad(self):
+    for record in self:
+        if record.edad < 18:
+            raise ValidationError("El alumno debe ser mayor de edad")
+```
